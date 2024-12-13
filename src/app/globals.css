@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.hard-orange{
+    background-color: #ff5757b5;
+}
+.light-orange{
+    background-color: #ff575724;
+}
