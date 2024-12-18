@@ -10,7 +10,7 @@ export default function CategoryDeleteButton(props) {
        if(!ask){
         return false
        }
-        const request = await fetch("http://localhost:3000/api/uploadCategory", {
+        const request = await fetch("http://localhost:3000/api/categories", {
             method: "DELETE",
             body: JSON.stringify({ id })
         })

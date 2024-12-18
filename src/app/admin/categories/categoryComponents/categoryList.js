@@ -3,7 +3,7 @@ import CategoryDeleteButton from "./CategoryDeleteButton";
 export default async function CategoryList() {
     let data = []
     try {
-        const request = await fetch("http://localhost:3000/api/uploadCategory",{cache:"no-cache"})
+        const request = await fetch("http://localhost:3000/api/categories",{cache:"no-cache"})
         const response = await request.json();
         //console.log(response.result);
         data = response.result

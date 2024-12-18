@@ -22,15 +22,17 @@ export  async function POST(req) {
 }
 
 export async function GET() {
-    let posts
+    let posts,postCount
     try {
         await mongoose.connect(process.env.NEXT_PUBLIC_MONGODB_STRING);
         posts = await PostSchema.find();
+
+        postCount = await PostSchema.countDocuments()
     } catch (error) {
         console.log("Fail to fetch posts", error);
 
     }
-    return NextResponse.json({ result: posts, success: true });
+    return NextResponse.json({ result: posts,count:postCount, success: true });
 }
 
 export async function DELETE(req) {

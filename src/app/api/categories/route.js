@@ -12,15 +12,24 @@ export async function POST(req) {
     return NextResponse.json({ result, success: true });
 }
 export async function GET() {
-    let category
+    let category, categoriesCount;
+
     try {
+        // Connect to MongoDB
         await mongoose.connect(process.env.NEXT_PUBLIC_MONGODB_STRING);
+
+        // Fetch all categories
         category = await CategorySchema.find();
+
+        // Get the count of all categories
+        categoriesCount = await CategorySchema.countDocuments();
+        
     } catch (error) {
         console.log("Fail to fetch details", error);
-
+        return NextResponse.json({ success: false, message: "Error fetching data" });
     }
-    return NextResponse.json({ result: category, success: true });
+
+    return NextResponse.json({ result: category, count: categoriesCount, success: true });
 }
 
 export async function DELETE(req) {

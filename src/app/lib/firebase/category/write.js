@@ -51,7 +51,7 @@ export const createNewCategory = async ({ data, image }) => {
   }
 
   try {
-    const request = await fetch("http://localhost:3000/api/uploadCategory", {
+    const request = await fetch("http://localhost:3000/api/categories", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -22,7 +22,7 @@ export default function AuthorForm() {
     async function fetchCategoryData() {
         let categories = [];
         try {
-            const response = await fetch("http://localhost:3000/api/uploadCategory", { cache: "no-cache" });
+            const response = await fetch("http://localhost:3000/api/categories", { cache: "no-cache" });
             const result = await response.json();
             categories = result.result;
         } catch (err) {

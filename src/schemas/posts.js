@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const newPost = new mongoose.Schema({
-    name: String,
+    title: String,
     email: String,
     bio: String,
     category: String,

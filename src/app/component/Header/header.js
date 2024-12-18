@@ -7,21 +7,27 @@ export default function Header() {
     return (
         <nav className="flex justify-between items-center px-7 py-3 border-b ">
             <Link href="/">
-                <img className="h-10" src="/logo.png" alt="expertBlog" />
+                <img className="h-10 min-w-[100px]" src="/logo.png" alt="expertBlog" />
             </Link>
             <ul className="flex gap-6 items-center">
+                <Link href={"/"}>
                 <li className="flex items-center gap-2">
                     <Home />
                     Home
                 </li>
+                </Link>
+                <Link href={"/categories"}>
                 <li className="flex items-center gap-2">
                     <List />
-                    Blogs
+                    Categories
                 </li>
+                </Link>
+                <Link href={"/contactUs"}>
                 <li className="flex items-center gap-2">
                     <MessageCircle />
-                    Contect Us
+                    Contact Us
                 </li>
+                </Link>
             </ul>
             <AuthContextProvider>
                 <LoginButton />

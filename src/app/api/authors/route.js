@@ -5,7 +5,7 @@ import cloudinary from "cloudinary/lib/cloudinary";
 
 
 export async function POST(req) {
-    const data =await req.json();
+    const data = await req.json();
     await mongoose.connect(process.env.NEXT_PUBLIC_MONGODB_STRING)
     // const existingUser = await AuthorSchema.findOne({email:data.email})
     // if(existingUser){
@@ -14,29 +14,32 @@ export async function POST(req) {
     // }
     const user = new AuthorSchema(data)
     let created = user.save()
-    
-    return NextResponse.json({created, success:true})
+
+    return NextResponse.json({ created, success: true })
 }
 
 export async function GET() {
-    let author=[]
+    let author = [], authorCount
     try {
         await mongoose.connect(process.env.NEXT_PUBLIC_MONGODB_STRING);
         author = await AuthorSchema.find();
+        authorCount = await AuthorSchema.countDocuments();
+        console.log("tota author is: ", authorCount);
+
     } catch (error) {
         console.log("Fail to fetch details", error);
 
     }
-    return NextResponse.json({ result: author, success: true });
+    return NextResponse.json({ result: author, count: authorCount, success: true });
 }
 
 export async function DELETE(req) {
     const { id } = await req.json();
-   // console.log("id in route is: ", id);
+    // console.log("id in route is: ", id);
     const record = { _id: id }
     await mongoose.connect(process.env.NEXT_PUBLIC_MONGODB_STRING);
     let data = await AuthorSchema.findByIdAndDelete(record);
-   // console.log("The public id is: ", data.public_id);
+    // console.log("The public id is: ", data.public_id);
     let public_id = data.public_id
 
     cloudinary.config({

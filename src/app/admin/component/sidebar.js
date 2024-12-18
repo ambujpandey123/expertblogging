@@ -1,4 +1,4 @@
-import { LayoutDashboard,LayoutList,Layers2,User } from "lucide-react"
+import { LayoutDashboard,LayoutList,Layers2,UserPen } from "lucide-react"
 import Link from "next/link"
 
 export default function SideBar() {
@@ -21,7 +21,7 @@ export default function SideBar() {
         {
             name: "Authors",
             link: "/admin/authors",
-            icon: <User />
+            icon: <UserPen />
         },
     ]
     return (
